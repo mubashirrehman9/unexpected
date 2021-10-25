@@ -1,0 +1,121 @@
+[gd_scene load_steps=26 format=2]
+
+[ext_resource path="res://Sprites/tileset/stage3/tileset_stage3.tres" type="TileSet" id=1]
+[ext_resource path="res://Sprites/Background/bg2.jpg" type="Texture" id=2]
+[ext_resource path="res://Sounds/Stage3.ogg" type="AudioStream" id=3]
+[ext_resource path="res://prince.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Sprites/Player/Idle .png" type="Texture" id=5]
+[ext_resource path="res://DialougeBox2.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scene_manager.tscn" type="PackedScene" id=7]
+[ext_resource path="res://end.gd" type="Script" id=8]
+[ext_resource path="res://Sprites/Prince/WTF In (24x8).png" type="Texture" id=9]
+
+[sub_resource type="AtlasTexture" id=1]
+atlas = ExtResource( 5 )
+region = Rect2( 0, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 5 )
+region = Rect2( 32, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=3]
+atlas = ExtResource( 5 )
+region = Rect2( 64, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=4]
+atlas = ExtResource( 5 )
+region = Rect2( 96, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 5 )
+region = Rect2( 128, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=6]
+atlas = ExtResource( 5 )
+region = Rect2( 160, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=7]
+atlas = ExtResource( 5 )
+region = Rect2( 192, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=8]
+atlas = ExtResource( 5 )
+region = Rect2( 224, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 5 )
+region = Rect2( 256, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 5 )
+region = Rect2( 288, 0, 32, 32 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 5 )
+region = Rect2( 320, 0, 32, 32 )
+
+[sub_resource type="SpriteFrames" id=12]
+animations = [ {
+"frames": [ SubResource( 1 ), SubResource( 2 ), SubResource( 3 ), SubResource( 4 ), SubResource( 5 ), SubResource( 6 ), SubResource( 7 ), SubResource( 8 ), SubResource( 9 ), SubResource( 10 ), SubResource( 11 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 34, 16 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 9 )
+region = Rect2( 34, 0, 34, 16 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 9 )
+region = Rect2( 68, 0, 34, 16 )
+
+[sub_resource type="SpriteFrames" id=16]
+animations = [ {
+"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
+
+[node name="end" type="Node2D"]
+script = ExtResource( 8 )
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 200, 96 )
+scale = Vector2( 0.55, 0.542667 )
+texture = ExtResource( 2 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -18.809
+autoplay = true
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+tile_data = PoolIntArray( 6, 47, 3, 13, 47, 3, 65542, 47, 65539, 65549, 47, 65539, 131078, 47, 262148, 131079, 47, 196609, 131080, 47, 196609, 131081, 47, 196609, 131082, 47, 196609, 131083, 47, 196609, 131084, 47, 196609, 131085, 47, 262151, 196614, 47, 65539, 196621, 47, 131075, 262150, 47, 65539, 327686, 47, 65539, 393222, 47, 196612, 393223, 47, 196609, 393224, 47, 196609, 393225, 47, 196609, 393226, 47, 196609, 393227, 47, 196609, 393228, 47, 196609, 393229, 47, 196610 )
+
+[node name="KinematicBody2D" parent="." instance=ExtResource( 4 )]
+position = Vector2( 192, 80 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 144, 80 )
+frames = SubResource( 12 )
+
+[node name="Dialouge" parent="." instance=ExtResource( 6 )]
+position = Vector2( 24, 0 )
+scale = Vector2( 0.921053, 1 )
+polygon = PoolVector2Array( 8, 120, 8, 176, 248.662, 176, 312, 176, 312, 152, 312, 120 )
+
+[node name="AnimatedSprite2" type="AnimatedSprite" parent="."]
+position = Vector2( 158.75, 72.7604 )
+frames = SubResource( 16 )
+playing = true
+
+[node name="scene_manager" parent="." instance=ExtResource( 7 )]

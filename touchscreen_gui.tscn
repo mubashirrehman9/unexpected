@@ -1,0 +1,101 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Sprites/touchscreen_gui/up1.png" type="Texture" id=1]
+[ext_resource path="res://Sprites/touchscreen_gui/up2.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/touchscreen_gui/right2.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/touchscreen_gui/left1.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/touchscreen_gui/left2.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/touchscreen_gui/right1.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/touchscreen_gui/pause.png" type="Texture" id=7]
+
+[node name="MarginContainer" type="MarginContainer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_right = 320.0
+margin_bottom = 180.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="control" type="Control" parent="VBoxContainer"]
+margin_right = 320.0
+margin_bottom = 176.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Control" type="Control" parent="VBoxContainer"]
+margin_top = 180.0
+margin_right = 320.0
+margin_bottom = 180.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Control"]
+margin_left = 280.0
+margin_top = -324.0
+margin_right = 320.0
+margin_bottom = -284.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="pause" type="TouchScreenButton" parent="VBoxContainer/Control/HBoxContainer"]
+position = Vector2( 8, 8 )
+scale = Vector2( 1.31707, 1.31707 )
+normal = ExtResource( 7 )
+action = "pause"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+margin_right = 320.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 0
+
+[node name="left_ctrl" type="Control" parent="HBoxContainer"]
+margin_right = 131.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 80, 50 )
+size_flags_horizontal = 3
+
+[node name="left" type="TouchScreenButton" parent="HBoxContainer/left_ctrl"]
+modulate = Color( 1, 1, 1, 0.588235 )
+scale = Vector2( 0.62439, 0.780488 )
+normal = ExtResource( 4 )
+pressed = ExtResource( 5 )
+action = "ui_left"
+visibility_mode = 1
+
+[node name="right" type="TouchScreenButton" parent="HBoxContainer/left_ctrl"]
+modulate = Color( 1, 1, 1, 0.588235 )
+position = Vector2( 48, -4.45449 )
+scale = Vector2( 0.62439, 0.780488 )
+normal = ExtResource( 6 )
+pressed = ExtResource( 3 )
+action = "ui_right"
+visibility_mode = 1
+
+[node name="Control" type="Control" parent="HBoxContainer"]
+margin_left = 135.0
+margin_right = 266.0
+margin_bottom = 50.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="right_ctrl" type="Control" parent="HBoxContainer"]
+margin_left = 270.0
+margin_right = 320.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 50, 50 )
+
+[node name="up" type="TouchScreenButton" parent="HBoxContainer/right_ctrl"]
+modulate = Color( 1, 1, 1, 0.588235 )
+position = Vector2( 10, 0 )
+scale = Vector2( 0.726829, 0.370732 )
+normal = ExtResource( 1 )
+pressed = ExtResource( 2 )
+action = "ui_up"
+visibility_mode = 1

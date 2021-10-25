@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Dialougebox.gd" type="Script" id=1]
+[ext_resource path="res://Fonts/computer_pixel-7.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Dialouge.gd" type="Script" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+use_mipmaps = true
+font_data = ExtResource( 2 )
+
+[node name="Dialouge" type="Polygon2D"]
+color = Color( 0.184314, 0.133333, 0.133333, 0.945098 )
+polygon = PoolVector2Array( 8, 120, 8, 176, 248.662, 176, 312, 176, 312, 120 )
+script = ExtResource( 3 )
+
+[node name="DialougeText" type="RichTextLabel" parent="."]
+margin_left = 16.0
+margin_top = 128.0
+margin_right = 304.0
+margin_bottom = 168.0
+custom_fonts/normal_font = SubResource( 1 )
+text = "This is a text"
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="typedelay" type="Timer" parent="."]
+wait_time = 0.05
+autostart = true
+
+[node name="startdelay" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+[connection signal="timeout" from="typedelay" to="DialougeText" method="_on_typedelay_timeout"]
+[connection signal="timeout" from="startdelay" to="." method="_on_startdelay_timeout"]
